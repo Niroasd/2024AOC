@@ -1,1 +1,3 @@
 *.exe
+.vscode/tasks.json
+*input.txt
