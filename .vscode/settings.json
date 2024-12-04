@@ -41,6 +41,7 @@
         "iostream": "cpp",
         "string": "cpp",
         "algorithm": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "regex": "cpp"
     }
 }
