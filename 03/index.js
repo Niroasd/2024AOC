@@ -1,7 +1,7 @@
 const { log } = require('node:console');
 const fs = require('node:fs').promises;
 
-const re = /(mul\(\d{1,3},\d{1,3}\))/g;
+const re = /(mul\(\d{1,3},\d{1,3}\)|(do\(\))|don't\(\))/g;
 
 
 
