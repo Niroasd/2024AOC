@@ -1,25 +1,25 @@
-const { log } = require('node:console');
 const fs = require('node:fs').promises;
 
 const re = /(mul\(\d{1,3},\d{1,3}\)|(do\(\))|don't\(\))/g;
 
-
-
 const main = async () => {
     try {
+        let allow = true
         let fileData = await fs.readFile('input.txt');
-        // console.log(fileData + "ok");
-
-        // console.log((fileData.toString()));
         fileData = fileData.toString()
 
         let numbers = []
 
-
         let m = true;
-        while(m){
-            m = re.exec(fileData);
-            if(m){
+        while((m = re.exec(fileData)) !== null){
+            if(m[0] === "do()"){
+                allow = true;
+                continue
+            } else if(m[0] === "don't()"){
+                allow = false;
+                continue
+            }
+            if(m && allow){
                 let num1 = m.toString().slice(4)
                 let num1real = parseInt(num1)
 
@@ -31,6 +31,7 @@ const main = async () => {
             }
         }
         console.log(numbers.reduce((accumulator, currentValue) => accumulator + currentValue));
+        return numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
     } catch (err) {
         console.error("Error reading file:", err);
     }
